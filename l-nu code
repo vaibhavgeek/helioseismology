@@ -1,0 +1,13 @@
+import numpy as np			#create object of numpy library
+import pylab as pl      #create object of pylab library
+import fnmatch          #The fnmatch module matches filenames against a pattern
+import os
+
+matches = []
+for root, dirnames, filenames in os.walk('/home/himanshu/Desktop/run/'):
+    for filename in fnmatch.filter(filenames, '*.out'):		
+	data = np.loadtxt(filename)		#loading the data in text format into Python. The file should be in same folder as this code.
+	pl.plot(data[:,1], data[:,3])		#The numbers represent the column numbers in our data which are to be plotted on x- and y- axis 					respectively
+	pl.xlabel('l')				#Labelling the x- axis by variable plotted on it	
+	pl.ylabel('nu')				#Labelling the y- axis by variable plotted on it
+pl.show()
